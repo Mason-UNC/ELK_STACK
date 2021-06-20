@@ -1,0 +1,100 @@
+## Automated ELK Stack Deployment
+
+The files in this repository were used to configure the network depicted below.
+
+
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Ansible file may be used to install only certain pieces of it, such as Filebeat.
+
+   Enter the playbook file. Playbook-Ansible 
+
+This document contains the following details:
+- Description of the Topologu
+- Access Policies
+- ELK Configuration
+  - Beats in Use
+  - Machines Being Monitored
+- How to Use the Ansible Build
+
+
+### Description of the Topology my topology consists of all the Web VMS along with the load balancer and the network security group as followed: ELK_STACK virtual machines along with the JumpBoxProvisioner. 
+
+The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application. True, this ELk stack Virtual Machines goal was to be able to connect to Kibana and monitor the traffic coming in and out of the DVWA
+
+Load balancing ensures that the application will be highly Effective, in addition to restricting Flow to the network.
+What aspect of security do load balancers protect? What is the advantage of a jump box? A jump box is useful in monitoring and enabling access to multiple ansible containers and other virtual machines, the jump box is effective in establishing a connection to multiple applications, enabling you to jump from one to the other. 
+
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the files/data and system log flow.
+ What does Filebeat watch for? file beat watch is used to store and monitor the log data while also pushing them to other applications.
+ What does Metricbeat record? metric beat records statistics and ships them out to other applications. 
+
+The configuration details of each machine may be found below.
+_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
+
+| Name     | Function | IP Address | Operating System |
+|----------|----------|------------|------------------|
+| Jump Box | Gateway  | 10.0.0.1   | Linux            |
+|DVWA-1    | web application 10.0.0.7  | Linux/Azure  |
+| Web3     | virtual  | 10.0.0.10  | Linux/Azure      |
+|DVWA-2    | web application  | 10.0.0.9   | Linux/Azure      |
+
+
+### Access Policies
+
+The machines on the internal network are not exposed to the public Internet. 
+
+Only the workstation machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses: Personal computer IP through TCP 5601
+- Add whitelisted IP addresses: PC personal IP address.
+
+Machines within the network can only be accessed by ssh into the jumpbox.
+- Which machine did you allow to access your ELK VM? What was its IP address? the Jumpbox was used to access the Elk virtual Machine the ip for it was 10.0.0.4 
+
+A summary of the access policies in place can be found in the table below.
+
+| Name     | Publicly Accessible | Allowed IP Addresses |
+|----------|---------------------|----------------------|
+| Jump Box |no                   |PC address            |
+| Web3     |no                   |10.0.0.10             |
+| ELK      |no                   |10.2.0.5
+### Elk Configuration
+
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
+- TODO: What is the main advantage of automating configuration with Ansible? when you use automatic configuration there is less room for human errors. 
+
+The playbook implements the following tasks:
+- In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
+- the elk installation play you will run a .yml script
+enter into your ansible container by running "sudo docker start" and "sudo docker attach"
+open a .yml file by inputting "nano Playbook-Ansible.yml"
+enter in the values, be sure to include add more data
+ensure that your .yml file runs by inputting "playbook-ansible Playbok-Ansible.yml
+after it runs you should get a complete command displaying the number of completed tasks
+
+- 
+
+
+### Target Machines & Beats
+This ELK server is configured to monitor the following machines: DVWA-1 and DVWA-2 
+List the IP addresses of the machines you are monitoring 10.0.0.7 and 10.0.0.9
+
+
+We have installed the following Beats on these machines:
+we have installed file beat and metric beat on the Elk VM as well as the DVWA 1 and DVWA-2 
+
+These Beats allow us to collect the following information from each machine:
+-In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+file beat collects log event data and shares it to other applications or software applications. 
+Metric: metrics and system statistic data. 
+### Using the Playbook
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+
+SSH into the control node and follow the steps below:
+- Copy the Ansible file to Elk Installation and VM configuration.
+- Update the Filebeat-Playbook file to include Installer 
+- Run the playbook, and navigate to Kibana logs to check that the installation worked as expected. you will run the curl command to ensure you are able to establish a connection
+
+ Answer the following questions to fill in the blanks:
+-Which file is the playbook? Where do you copy it? Ansible-Playbook is the playbook configuration, you copy it by running cntrl shift C over the whole file.
+-Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on? to run the filebeat configuration you will run playbook-ansible with the title name, you would ensure that it runs with no syntax errors and no failed messages. 
+-Which URL do you navigate to in order to check that the ELK server is running? go to kibana and ensure that kibana is running you will run the curl command to ensure you are able to establish a connection
+
+_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
